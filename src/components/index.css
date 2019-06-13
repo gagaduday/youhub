@@ -1,0 +1,21 @@
+.video-item {
+  display: flex !important;
+  align-items: center !important;
+  cursor: pointer;
+}
+
+.video-item.item img {
+  max-width: 200px;
+}
+
+.login_button {
+  float: right;
+}
+
+.header {
+  background-color: #f8f8f8 !important;
+}
+
+.video_selected {
+  margin-top: 50px;
+}
