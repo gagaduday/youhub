@@ -4,13 +4,9 @@ import { fetchPopular, selectVideo } from "../actions";
 import { connect } from "react-redux";
 
 class VideoList extends React.Component {
-  componentDidMount() {
-    this.renderedList();
-  }
-
   renderedList = () => {
     if (!this.props.popular) return null;
-    console.log(this.props.popular);
+    this.props.fetchPopular();
     return this.props.popular.map((video, index) => {
       return (
         <VideoItem key={index} onVideoSelect={selectVideo} video={video} />
@@ -29,6 +25,7 @@ class VideoList extends React.Component {
 
 const mapStateToProps = state => {
   return {
+    video: state.video,
     popular: state.popular
   };
 };

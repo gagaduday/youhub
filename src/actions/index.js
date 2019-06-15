@@ -1,6 +1,14 @@
-import { SIGN_IN, SIGN_OUT, SEARCH_VIDEO } from "./types";
+import {
+  SIGN_IN,
+  SIGN_OUT,
+  SEARCH_VIDEO,
+  FETCH_VIDEOS,
+  FETCH_RELATED,
+  FETCH_POPULAR,
+  RENDER_VIDEOS,
+  SELECT_VIDEO
+} from "./types";
 import youtube from "../apis/youtube";
-import popular from "../apis/popular";
 import history from "../history";
 
 export const signIn = userId => {
@@ -31,7 +39,7 @@ export const fetchVideos = term => async dispatch => {
       q: term
     }
   });
-  dispatch({ type: "FETCH_VIDEOS", payload: response.data.items });
+  dispatch({ type: FETCH_VIDEOS, payload: response.data.items });
   history.push(`/search`);
 };
 
@@ -43,7 +51,7 @@ export const fetchRelated = videoId => async dispatch => {
       type: "video"
     }
   });
-  dispatch({ type: "FETCH_RELATED", payload: response.data.items });
+  dispatch({ type: FETCH_RELATED, payload: response.data.items });
 };
 
 export const fetchPopular = () => async dispatch => {
@@ -54,12 +62,12 @@ export const fetchPopular = () => async dispatch => {
       regionCode: "US"
     }
   });
-  dispatch({ type: "FETCH_POPULAR", payload: response });
+  dispatch({ type: FETCH_POPULAR, payload: response.data.items });
 };
 
 export const renderVideos = videos => {
   return {
-    type: "RENDER_VIDEOS",
+    type: RENDER_VIDEOS,
     payload: videos
   };
 };
@@ -67,7 +75,7 @@ export const renderVideos = videos => {
 export const selectVideo = video => {
   history.push("/selected");
   return {
-    type: "SELECT_VIDEO",
+    type: SELECT_VIDEO,
     payload: video
   };
 };
