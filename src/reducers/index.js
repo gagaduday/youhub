@@ -3,10 +3,14 @@ import authReducer from "./authReducer";
 import searchVideoReducer from "./searchVideoReducer";
 import videoReducer from "./videoReducer";
 import fetchVideosReducer from "./fetchVideosReducer";
+import fetchRelatedReducer from "./fetchRelatedReducer";
+import fetchPopularReducer from "./fetchPopularReducer";
 
 export default combineReducers({
   auth: authReducer,
   input: searchVideoReducer,
   videos: fetchVideosReducer,
-  video: videoReducer
+  video: videoReducer,
+  related: fetchRelatedReducer,
+  popular: fetchPopularReducer
 });

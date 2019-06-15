@@ -1,5 +1,5 @@
 import React from "react";
-import VideoList from "./VideoList";
+import VideoRelated from "./VideoRelated";
 import VideoDetail from "./VideoDetail";
 
 class VideoSelected extends React.Component {
@@ -12,7 +12,7 @@ class VideoSelected extends React.Component {
               <VideoDetail />
             </div>
             <div className="five wide column">
-              <VideoList />
+              <VideoRelated />
             </div>
           </div>
         </div>

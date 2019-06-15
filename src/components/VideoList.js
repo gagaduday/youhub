@@ -4,17 +4,19 @@ import { fetchVideos, selectVideo } from "../actions";
 import { connect } from "react-redux";
 
 class VideoList extends React.Component {
-  renderedList() {
-    if (!this.props.videos) return null;
-    return this.props.videos.map((video, index) => {
-      return (
-        <VideoItem key={index} onVideoSelect={selectVideo} video={video} />
-      );
-    });
-  }
-
   render() {
-    return <div className="ui relaxed divided list">{this.renderedList()}</div>;
+    const renderedList = () => {
+      if (!this.props.videos) return null;
+      return this.props.videos.map((video, index) => {
+        return (
+          <VideoItem key={index} onVideoSelect={selectVideo} video={video} />
+        );
+      });
+    };
+
+    return (
+      <div className="ui container relaxed divided list">{renderedList()}</div>
+    );
   }
 }
 

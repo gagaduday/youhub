@@ -1,5 +1,7 @@
 import { SIGN_IN, SIGN_OUT, SEARCH_VIDEO } from "./types";
 import youtube from "../apis/youtube";
+import popular from "../apis/popular";
+import history from "../history";
 
 export const signIn = userId => {
   return {
@@ -24,10 +26,35 @@ export const searchVideo = input => {
 export const fetchVideos = term => async dispatch => {
   const response = await youtube.get("/search", {
     params: {
+      part: "snippet",
+      maxResults: "10",
       q: term
     }
   });
   dispatch({ type: "FETCH_VIDEOS", payload: response.data.items });
+  history.push(`/search`);
+};
+
+export const fetchRelated = videoId => async dispatch => {
+  const response = await youtube.get("/search", {
+    params: {
+      part: "snippet",
+      relatedToVideoId: videoId,
+      type: "video"
+    }
+  });
+  dispatch({ type: "FETCH_RELATED", payload: response.data.items });
+};
+
+export const fetchPopular = () => async dispatch => {
+  const response = await youtube.get("/videos", {
+    params: {
+      part: "snippet,contentDetails,statistics",
+      chart: "mostPopular",
+      regionCode: "US"
+    }
+  });
+  dispatch({ type: "FETCH_POPULAR", payload: response });
 };
 
 export const renderVideos = videos => {
@@ -38,6 +65,7 @@ export const renderVideos = videos => {
 };
 
 export const selectVideo = video => {
+  history.push("/selected");
   return {
     type: "SELECT_VIDEO",
     payload: video

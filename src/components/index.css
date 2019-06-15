@@ -19,3 +19,14 @@
 .video_selected {
   margin-top: 50px;
 }
+
+/* font chữ cho VideoItem title */
+.item-content-title {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+/* font chữ cho VideoItem channel title */
+.item-content-channel {
+  font-size: smaller;
+}

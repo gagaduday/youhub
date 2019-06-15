@@ -3,24 +3,20 @@ import { Router, Route, Switch } from "react-router-dom";
 import history from "../history";
 
 import Header from "./Header";
+import HomePage from "./HomePage";
 import VideoList from "./VideoList";
-import SearchList from "./SearchList";
 import VideoSelected from "./VideoSelected";
 
 const App = () => {
   return (
     <div>
-      <div>
-        <Header />
-      </div>
-      <div>
-        <VideoSelected />
-      </div>
       <Router history={history}>
         <div>
+          <Header />
           <Switch>
-            <Route path="/searchlist" component={SearchList} />
-            <Route path="/videolist" component={VideoList} />
+            <Route path="/" exact component={HomePage} />
+            <Route path="/search" component={VideoList} />
+            <Route path="/selected" component={VideoSelected} />
           </Switch>
         </div>
       </Router>
