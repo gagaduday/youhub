@@ -20,7 +20,7 @@ class SearchBar extends React.Component {
               placeholder="Search"
             />
             <button
-              className="ui grey basic button"
+              className="ui white basic button"
               onClick={this.onFormSubmit}
             >
               <i class="search link icon" />

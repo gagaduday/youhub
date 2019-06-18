@@ -5,6 +5,7 @@ import videoReducer from "./videoReducer";
 import fetchVideosReducer from "./fetchVideosReducer";
 import fetchRelatedReducer from "./fetchRelatedReducer";
 import fetchPopularReducer from "./fetchPopularReducer";
+import toggleSideBarReducer from "./toggleSideBarReducer";
 
 export default combineReducers({
   auth: authReducer,
@@ -12,5 +13,6 @@ export default combineReducers({
   videos: fetchVideosReducer,
   video: videoReducer,
   related: fetchRelatedReducer,
-  popular: fetchPopularReducer
+  popular: fetchPopularReducer,
+  visible: toggleSideBarReducer
 });

@@ -1,7 +1,8 @@
 import React from "react";
-import VideoItem from "./VideoItem";
+import VideoItemMain from "./VideoItemMain";
 import { fetchPopular, selectVideo } from "../actions";
 import { connect } from "react-redux";
+import "./index.css";
 
 class VideoList extends React.Component {
   renderedList = () => {
@@ -9,17 +10,19 @@ class VideoList extends React.Component {
     this.props.fetchPopular();
     return this.props.popular.map((video, index) => {
       return (
-        <VideoItem key={index} onVideoSelect={selectVideo} video={video} />
+        <div className="three wide column">
+          <VideoItemMain
+            key={index}
+            onVideoSelect={selectVideo}
+            video={video}
+          />
+        </div>
       );
     });
   };
 
   render() {
-    return (
-      <div className="ui container relaxed divided list">
-        {this.renderedList()}
-      </div>
-    );
+    return <div className="homepage ui grid">{this.renderedList()}</div>;
   }
 }
 

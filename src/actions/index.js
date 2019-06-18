@@ -35,7 +35,7 @@ export const fetchVideos = term => async dispatch => {
   const response = await youtube.get("/search", {
     params: {
       part: "snippet",
-      maxResults: "10",
+      maxResults: "20",
       q: term
     }
   });
@@ -48,6 +48,7 @@ export const fetchRelated = videoId => async dispatch => {
     params: {
       part: "snippet",
       relatedToVideoId: videoId,
+      maxResults: "20",
       type: "video"
     }
   });
@@ -59,7 +60,8 @@ export const fetchPopular = () => async dispatch => {
     params: {
       part: "snippet,contentDetails,statistics",
       chart: "mostPopular",
-      regionCode: "US"
+      maxResults: "20",
+      regionCode: "VN"
     }
   });
   dispatch({ type: FETCH_POPULAR, payload: response.data.items });
@@ -77,5 +79,21 @@ export const selectVideo = video => {
   return {
     type: SELECT_VIDEO,
     payload: video
+  };
+};
+
+// ẩn hiện cho sidebar
+
+export const showSideBar = () => {
+  return {
+    type: "SHOW_SIDEBAR",
+    payload: true
+  };
+};
+
+export const hideSideBar = () => {
+  return {
+    type: "HIDE_SIDEBAR",
+    payload: false
   };
 };

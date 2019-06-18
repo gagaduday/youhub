@@ -12,8 +12,6 @@ class VideoDetail extends React.Component {
       this.props.video.id.videoId
     }`;
 
-    console.log(this.props.video);
-
     return (
       <div>
         <div className="ui embed">

@@ -1,35 +1,76 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import { showSideBar, hideSideBar } from "../actions";
+import { connect } from "react-redux";
+import { Button } from "semantic-ui-react";
+
 import GoogleAuth from "./GoogleAuth";
 import SearchBar from "./SearchBar";
-import { Link } from "react-router-dom";
+import UploadVideo from "./dropdowns/UploadVideo";
+import Application from "./dropdowns/Application";
+import Message from "./dropdowns/Message";
+import Notification from "./dropdowns/Notification";
 
 import "./index.css";
 
-const Header = () => {
-  return (
-    <div className="header ui segment">
-      <div className="ui grid">
-        <div className="ui row">
-          <div className="four wide column">
-            <Link to="/" className="item">
-              <div className="ui inverted green big label">
-                Anatatube&nbsp;&nbsp;
-                <i class="youtube square icon" />
+class Header extends React.Component {
+  render() {
+    return (
+      <div className="header ui segment">
+        <div className="ui grid">
+          <div className="ui row">
+            <div className="four wide column">
+              <div>
+                <Button.Group className="button_sidebar">
+                  <Button
+                    disabled={this.props.visible}
+                    onClick={this.props.showSideBar}
+                  >
+                    <i className="youtube square red icon" />
+                  </Button>
+                </Button.Group>
               </div>
-            </Link>
-          </div>
-          <div className="eight wide column">
-            <SearchBar />
-          </div>
-          <div className="four wide column">
-            <div className="login_button">
-              <GoogleAuth />
+              <Link to="/">
+                <div class="hub">
+                  <span>You</span>
+                  <span>Hub</span>
+                </div>
+              </Link>
+            </div>
+            <div className="eight wide column">
+              <SearchBar />
+            </div>
+            <div className="four wide column">
+              <div className="login_button">
+                <GoogleAuth />
+              </div>
+              <div className="dropdown">
+                <UploadVideo />
+              </div>
+              <div className="dropdown">
+                <Application />
+              </div>
+              <div className="dropdown">
+                <Message />
+              </div>
+              <div className="dropdown">
+                <Notification />
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  }
+}
+
+const mapStateToProps = state => {
+  return {
+    visible: state.visible
+  };
 };
 
-export default Header;
+export default connect(
+  mapStateToProps,
+  { showSideBar, hideSideBar }
+)(Header);
