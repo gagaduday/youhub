@@ -5,14 +5,15 @@ import { connect } from "react-redux";
 import "./index.css";
 
 class VideoList extends React.Component {
+  componentDidMount() {
+    this.props.fetchPopular();
+  }
   renderedList = () => {
     if (!this.props.popular) return null;
-    this.props.fetchPopular();
     return this.props.popular.map((video, index) => {
       return (
-        <div className="three wide column">
+        <div key={index} className="three wide column">
           <VideoItemMain
-            key={index}
             onVideoSelect={selectVideo}
             video={video}
           />

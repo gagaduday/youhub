@@ -31,7 +31,7 @@ class Header extends React.Component {
                 </Button.Group>
               </div>
               <Link to="/">
-                <div class="hub">
+                <div className="hub">
                   <span>You</span>
                   <span>Hub</span>
                 </div>
