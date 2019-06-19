@@ -6,7 +6,7 @@ const Notification = () => {
     <div>
       <Dropdown>
         <Dropdown.Toggle variant="warning" id="dropdown-basic">
-          <i class="bell outline icon" />
+          <i className="bell outline icon" />
         </Dropdown.Toggle>
       </Dropdown>
     </div>

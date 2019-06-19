@@ -6,7 +6,7 @@ const Message = () => {
     <div>
       <Dropdown>
         <Dropdown.Toggle variant="warning" id="dropdown-basic">
-          <i class="facebook messenger icon" />
+          <i className="facebook messenger icon" />
         </Dropdown.Toggle>
       </Dropdown>
     </div>

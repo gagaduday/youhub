@@ -6,7 +6,7 @@ const UploadVideo = () => {
     <div>
       <Dropdown>
         <Dropdown.Toggle variant="warning" id="dropdown-basic">
-          <i class="plus square outline icon" />
+          <i className="plus square outline icon" />
         </Dropdown.Toggle>
         <Dropdown.Menu>
           <Dropdown.Item href="#">Upload Video</Dropdown.Item>

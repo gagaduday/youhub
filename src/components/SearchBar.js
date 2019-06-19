@@ -23,7 +23,7 @@ class SearchBar extends React.Component {
               className="ui white basic button"
               onClick={this.onFormSubmit}
             >
-              <i class="search link icon" />
+              <i className="search link icon" />
             </button>
           </div>
         </form>
