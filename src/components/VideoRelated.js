@@ -4,9 +4,12 @@ import { fetchRelated, selectVideo } from "../actions";
 import { connect } from "react-redux";
 
 class VideoRelated extends React.Component {
-  fetchRelatedVideo = () => {
+  componentDidMount() {
     if (!this.props.video) return null;
     this.props.fetchRelated(this.props.video.id.videoId);
+  }
+
+  fetchRelatedVideo = () => {
     return this.props.related.map((video, index) => {
       return (
         <VideoItem key={index} onVideoSelect={selectVideo} video={video} />

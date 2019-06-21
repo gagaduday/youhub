@@ -1,6 +1,6 @@
 import React from "react";
 import VideoItem from "./VideoItem";
-import { fetchVideos, selectVideo } from "../actions";
+import { selectVideo } from "../actions";
 import { connect } from "react-redux";
 
 class VideoList extends React.Component {
@@ -28,5 +28,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { fetchVideos, selectVideo }
+  { selectVideo }
 )(VideoList);

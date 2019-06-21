@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { showSideBar, hideSideBar } from "../actions";
+import { showSideBar } from "../actions";
 import { connect } from "react-redux";
 import { Button } from "semantic-ui-react";
 
@@ -72,5 +72,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { showSideBar, hideSideBar }
+  { showSideBar }
 )(Header);
