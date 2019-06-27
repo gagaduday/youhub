@@ -4,6 +4,8 @@ import { selectVideo } from "../actions";
 import { connect } from "react-redux";
 
 class VideoList extends React.Component {
+  componentDidMount() {}
+
   render() {
     const renderedList = () => {
       if (!this.props.videos) return null;

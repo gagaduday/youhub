@@ -1,5 +1,5 @@
 import React from "react";
-import VideoItemMain from "./VideoItemMain";
+import VideoItem from "./VideoItem";
 import { fetchPopular, selectVideo } from "../actions";
 import { connect } from "react-redux";
 import "./index.css";
@@ -13,10 +13,7 @@ class VideoList extends React.Component {
     return this.props.popular.map((video, index) => {
       return (
         <div key={index} className="three wide column">
-          <VideoItemMain
-            onVideoSelect={selectVideo}
-            video={video}
-          />
+          <VideoItem video={video} isFromHome={true} />
         </div>
       );
     });
@@ -29,7 +26,7 @@ class VideoList extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    video: state.video,
+    // video: state.video,
     popular: state.popular
   };
 };

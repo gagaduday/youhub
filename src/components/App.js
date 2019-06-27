@@ -24,7 +24,7 @@ const App = props => {
                   <Switch>
                     <Route path="/" exact component={HomePage} />
                     <Route path="/search" component={VideoList} />
-                    <Route path="/selected" component={VideoSelected} />
+                    <Route path="/selected/:id" component={VideoSelected} />
                   </Switch>
                 </div>
               </Segment>

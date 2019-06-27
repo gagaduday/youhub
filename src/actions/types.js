@@ -10,6 +10,4 @@ export const FETCH_RELATED = "FETCH_RELATED";
 
 export const FETCH_POPULAR = "FETCH_POPULAR";
 
-export const RENDER_VIDEOS = "RENDER_VIDEOS";
-
 export const SELECT_VIDEO = "SELECT_VIDEO";

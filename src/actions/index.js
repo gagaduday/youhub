@@ -5,7 +5,6 @@ import {
   FETCH_VIDEOS,
   FETCH_RELATED,
   FETCH_POPULAR,
-  RENDER_VIDEOS,
   SELECT_VIDEO
 } from "./types";
 import youtube from "../apis/youtube";
@@ -31,6 +30,18 @@ export const searchVideo = input => {
   };
 };
 
+//fetch danh sách video tìm kiếm
+
+export const fetchVideoDetail = id => async dispatch => {
+  const response = await youtube.get(`/videos`, {
+    params: {
+      part: "snippet",
+      id
+    }
+  });
+  dispatch({ type: "FETCH_VIDEO_DETAIL", payload: response.data.items });
+};
+
 export const fetchVideos = term => async dispatch => {
   const response = await youtube.get("/search", {
     params: {
@@ -42,6 +53,8 @@ export const fetchVideos = term => async dispatch => {
   dispatch({ type: FETCH_VIDEOS, payload: response.data.items });
   history.push(`/search`);
 };
+
+//fetch danh sách video liên quan
 
 export const fetchRelated = videoId => async dispatch => {
   const response = await youtube.get("/search", {
@@ -55,6 +68,8 @@ export const fetchRelated = videoId => async dispatch => {
   dispatch({ type: FETCH_RELATED, payload: response.data.items });
 };
 
+//fetch danh sách video trending
+
 export const fetchPopular = () => async dispatch => {
   const response = await youtube.get("/videos", {
     params: {
@@ -67,15 +82,7 @@ export const fetchPopular = () => async dispatch => {
   dispatch({ type: FETCH_POPULAR, payload: response.data.items });
 };
 
-export const renderVideos = videos => {
-  return {
-    type: RENDER_VIDEOS,
-    payload: videos
-  };
-};
-
 export const selectVideo = video => {
-  history.push("/selected");
   return {
     type: SELECT_VIDEO,
     payload: video
