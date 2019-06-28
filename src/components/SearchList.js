@@ -1,18 +1,15 @@
 import React from "react";
 import VideoItem from "./VideoItem";
-import { selectVideo } from "../actions";
 import { connect } from "react-redux";
 
-class VideoList extends React.Component {
+class SearchList extends React.Component {
   componentDidMount() {}
 
   render() {
     const renderedList = () => {
       if (!this.props.videos) return null;
       return this.props.videos.map((video, index) => {
-        return (
-          <VideoItem key={index} onVideoSelect={selectVideo} video={video} />
-        );
+        return <VideoItem key={index} video={video} />;
       });
     };
 
@@ -30,5 +27,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { selectVideo }
-)(VideoList);
+  null
+)(SearchList);

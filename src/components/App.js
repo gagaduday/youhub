@@ -5,7 +5,7 @@ import { Segment, Sidebar } from "semantic-ui-react";
 import { connect } from "react-redux";
 
 import Header from "./Header";
-import VideoList from "./VideoList";
+import SearchList from "./SearchList";
 import VideoSelected from "./VideoSelected";
 import SideBar from "./SideBar";
 import HomePage from "./HomePage";
@@ -23,7 +23,7 @@ const App = props => {
                 <div style={{ height: "100vh" }}>
                   <Switch>
                     <Route path="/" exact component={HomePage} />
-                    <Route path="/search" component={VideoList} />
+                    <Route path="/search" component={SearchList} />
                     <Route path="/selected/:id" component={VideoSelected} />
                   </Switch>
                 </div>

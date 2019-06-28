@@ -5,7 +5,9 @@ import {
   FETCH_VIDEOS,
   FETCH_RELATED,
   FETCH_POPULAR,
-  SELECT_VIDEO
+  FETCH_VIDEO_DETAIL,
+  SHOW_SIDEBAR,
+  HIDE_SIDEBAR
 } from "./types";
 import youtube from "../apis/youtube";
 import history from "../history";
@@ -39,7 +41,7 @@ export const fetchVideoDetail = id => async dispatch => {
       id
     }
   });
-  dispatch({ type: "FETCH_VIDEO_DETAIL", payload: response.data.items });
+  dispatch({ type: FETCH_VIDEO_DETAIL, payload: response.data.items });
 };
 
 export const fetchVideos = term => async dispatch => {
@@ -82,25 +84,18 @@ export const fetchPopular = () => async dispatch => {
   dispatch({ type: FETCH_POPULAR, payload: response.data.items });
 };
 
-export const selectVideo = video => {
-  return {
-    type: SELECT_VIDEO,
-    payload: video
-  };
-};
-
 // ẩn hiện cho sidebar
 
 export const showSideBar = () => {
   return {
-    type: "SHOW_SIDEBAR",
+    type: SHOW_SIDEBAR,
     payload: true
   };
 };
 
 export const hideSideBar = () => {
   return {
-    type: "HIDE_SIDEBAR",
+    type: HIDE_SIDEBAR,
     payload: false
   };
 };
