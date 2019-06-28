@@ -3,19 +3,16 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const VideoItem = props => {
-  if (!props.video) return null;
+  if (!props.video) return null; // m viet cai nay thi khac gi
   let title = props.video.snippet.title;
   let channelTitle = props.video.snippet.channelTitle;
 
+  const id = props.isFromHome ? props.video.id : props.video.id.videoId;
   return (
     <div
-      className={`${props.isFromHome ? "video-item-main" : "video-item"} item`}
+      className={`${props.isFromHome ? "video-item-main" : "video-item"} item`} // day nua
     >
-      <Link
-        to={`/selected/${
-          props.isFromHome ? props.video.id : props.video.id.videoId
-        }}`}
-      >
+      <Link to={`/selected/${id}`}>
         <img
           alt={props.video.snippet.title}
           className="ui image"

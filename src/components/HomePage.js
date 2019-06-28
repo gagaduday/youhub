@@ -1,6 +1,7 @@
 import React from "react";
+import { Helmet } from "react-helmet";
 import VideoItem from "./VideoItem";
-import { fetchPopular, selectVideo } from "../actions";
+import { fetchPopular } from "../actions";
 import { connect } from "react-redux";
 import "./index.css";
 
@@ -20,18 +21,24 @@ class VideoList extends React.Component {
   };
 
   render() {
-    return <div className="homepage ui grid">{this.renderedList()}</div>;
+    return (
+      <div className="homepage ui grid">
+        <Helmet>
+          <title>Home</title>
+        </Helmet>
+        {this.renderedList()}
+      </div>
+    );
   }
 }
 
 const mapStateToProps = state => {
   return {
-    // video: state.video,
     popular: state.popular
   };
 };
 
 export default connect(
   mapStateToProps,
-  { fetchPopular, selectVideo }
+  { fetchPopular }
 )(VideoList);

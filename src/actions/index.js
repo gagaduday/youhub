@@ -56,12 +56,12 @@ export const fetchVideos = term => async dispatch => {
 
 //fetch danh sách video liên quan
 
-export const fetchRelated = videoId => async dispatch => {
+export const fetchRelated = id => async dispatch => {
   const response = await youtube.get("/search", {
     params: {
       part: "snippet",
-      relatedToVideoId: videoId,
-      maxResults: "20",
+      relatedToVideoId: id,
+      maxResults: "10",
       type: "video"
     }
   });

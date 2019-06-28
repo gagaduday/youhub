@@ -3,6 +3,7 @@ import VideoRelated from "./VideoRelated";
 import VideoDetail from "./VideoDetail";
 import { fetchVideoDetail, fetchRelated } from "../actions";
 import { connect } from "react-redux";
+import { Helmet } from "react-helmet";
 
 class VideoSelected extends React.Component {
   componentDidMount() {
@@ -22,6 +23,11 @@ class VideoSelected extends React.Component {
   render() {
     return (
       <div className="video_selected ui container">
+        {this.props.videoDetail && (
+          <Helmet>
+            <title>{this.props.videoDetail[0].snippet.title}</title>
+          </Helmet>
+        )}
         <div className="ui grid">
           <div className="ui row">
             <div className="eleven wide column">
