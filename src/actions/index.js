@@ -1,7 +1,6 @@
 import {
   SIGN_IN,
   SIGN_OUT,
-  SEARCH_VIDEO,
   FETCH_VIDEOS,
   FETCH_RELATED,
   FETCH_POPULAR,
@@ -12,6 +11,7 @@ import {
 import youtube from "../apis/youtube";
 import history from "../history";
 
+// đăng nhập bằng google
 export const signIn = userId => {
   return {
     type: SIGN_IN,
@@ -25,15 +25,7 @@ export const signOut = () => {
   };
 };
 
-export const searchVideo = input => {
-  return {
-    type: SEARCH_VIDEO,
-    payload: input
-  };
-};
-
 //fetch danh sách video tìm kiếm
-
 export const fetchVideoDetail = id => async dispatch => {
   const response = await youtube.get(`/videos`, {
     params: {
@@ -57,7 +49,6 @@ export const fetchVideos = term => async dispatch => {
 };
 
 //fetch danh sách video liên quan
-
 export const fetchRelated = id => async dispatch => {
   const response = await youtube.get("/search", {
     params: {
@@ -71,7 +62,6 @@ export const fetchRelated = id => async dispatch => {
 };
 
 //fetch danh sách video trending
-
 export const fetchPopular = () => async dispatch => {
   const response = await youtube.get("/videos", {
     params: {
@@ -85,7 +75,6 @@ export const fetchPopular = () => async dispatch => {
 };
 
 // ẩn hiện cho sidebar
-
 export const showSideBar = () => {
   return {
     type: SHOW_SIDEBAR,

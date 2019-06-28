@@ -24,7 +24,7 @@ class VideoList extends React.Component {
     return (
       <div className="homepage ui grid">
         <Helmet>
-          <title>Home</title>
+          <title>YouHub</title>
         </Helmet>
         {this.renderedList()}
       </div>

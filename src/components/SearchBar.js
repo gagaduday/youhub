@@ -1,11 +1,17 @@
 import React from "react";
 import { connect } from "react-redux";
-import { fetchVideos, searchVideo } from "../actions";
+import { fetchVideos } from "../actions";
 
 class SearchBar extends React.Component {
+  state = { term: "" };
+
   onFormSubmit = e => {
     e.preventDefault();
-    this.props.fetchVideos(this.props.input);
+    this.props.fetchVideos(this.state.term);
+  };
+
+  onInputChange = e => {
+    this.setState({ term: e.target.value });
   };
 
   render() {
@@ -15,8 +21,8 @@ class SearchBar extends React.Component {
           <div className="ui fluid action input focus">
             <input
               type="text"
-              value={this.props.input}
-              onChange={event => this.props.searchVideo(event.target.value)}
+              value={this.state.term}
+              onChange={this.onInputChange}
               placeholder="Search"
             />
             <button
@@ -32,11 +38,7 @@ class SearchBar extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
-  return { input: state.input };
-};
-
 export default connect(
-  mapStateToProps,
-  { fetchVideos, searchVideo }
+  null,
+  { fetchVideos }
 )(SearchBar);
