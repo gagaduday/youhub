@@ -9,6 +9,7 @@ import SearchList from "./SearchList";
 import VideoSelected from "./VideoSelected";
 import SideBar from "./SideBar";
 import HomePage from "./HomePage";
+import { Z_FIXED } from "zlib";
 
 const App = props => {
   return (
@@ -20,10 +21,10 @@ const App = props => {
             <SideBar />
             <Sidebar.Pusher dimmed={props.visible}>
               <Segment basic>
-                <div style={{ height: "100vh" }}>
+                <div>
                   <Switch>
                     <Route path="/" exact component={HomePage} />
-                    <Route path="/search" component={SearchList} />
+                    <Route path="/search/:term" component={SearchList} />
                     <Route path="/selected/:id" component={VideoSelected} />
                   </Switch>
                 </div>

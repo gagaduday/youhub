@@ -25,7 +25,7 @@ export const signOut = () => {
   };
 };
 
-//fetch danh sách video tìm kiếm
+//fetch 1 video detail
 export const fetchVideoDetail = id => async dispatch => {
   const response = await youtube.get(`/videos`, {
     params: {
@@ -36,16 +36,18 @@ export const fetchVideoDetail = id => async dispatch => {
   dispatch({ type: FETCH_VIDEO_DETAIL, payload: response.data.items });
 };
 
+//fetch danh sách video tìm kiếm
 export const fetchVideos = term => async dispatch => {
   const response = await youtube.get("/search", {
     params: {
       part: "snippet",
       maxResults: "20",
-      q: term
+      q: term,
+      type: "video"
     }
   });
   dispatch({ type: FETCH_VIDEOS, payload: response.data.items });
-  history.push(`/search`);
+  history.push(`/search/${term}`);
 };
 
 //fetch danh sách video liên quan
